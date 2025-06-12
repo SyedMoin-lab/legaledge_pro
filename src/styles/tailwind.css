@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Primary Colors */
+  --color-primary: #1B365D; /* Navy blue for legal authority - blue-900 */
+  --color-secondary: #2C5282; /* Supporting blue for hierarchy - blue-700 */
+  --color-accent: #C9A961; /* Gold for premium positioning - yellow-600 */
+  
+  /* Background Colors */
+  --color-background: #FFFFFF; /* Clean white for credibility - white */
+  --color-surface: #F7FAFC; /* Subtle gray for separation - gray-50 */
+  
+  /* Text Colors */
+  --color-text-primary: #1A202C; /* High contrast for scanning - gray-900 */
+  --color-text-secondary: #4A5568; /* Supporting text - gray-600 */
+  
+  /* Status Colors */
+  --color-success: #38A169; /* Green for positive metrics - green-500 */
+  --color-warning: #D69E2E; /* Gold-orange for urgency - yellow-500 */
+  --color-error: #E53E3E; /* Red for form validation - red-500 */
+  
+  /* Border Colors */
+  --color-border: #E2E8F0; /* Form fields and dividers - gray-200 */
+  --color-border-accent: #C9A961; /* CTA button borders - yellow-600 */
+  
+  /* Shadow Colors */
+  --shadow-cta: 0 4px 6px -1px rgba(0, 0, 0, 0.1); /* CTA button elevation */
+  --shadow-card: 0 1px 3px 0 rgba(0, 0, 0, 0.1); /* Testimonial cards */
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--color-text-primary);
+    background-color: var(--color-background);
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+  }
+  
+  .font-accent {
+    font-family: 'Crimson Text', serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-accent text-white font-semibold px-6 py-3 rounded-lg border-2 border-accent transition-all duration-250 ease-in-out;
+    box-shadow: var(--shadow-cta);
+  }
+  
+  .btn-primary:hover {
+    @apply bg-accent/90 border-accent/90 transform -translate-y-0.5;
+  }
+  
+  .card-testimonial {
+    @apply bg-white rounded-lg p-6 border border-border;
+    box-shadow: var(--shadow-card);
+  }
+  
+  .nav-link {
+    @apply text-text-secondary hover:text-primary transition-colors duration-250 ease-in-out font-medium;
+  }
+  
+  .nav-link.active {
+    @apply text-primary font-semibold;
+  }
+  
+  .form-input {
+    @apply border border-border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-250 ease-in-out;
+  }
+  
+  .section-padding {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+  
+  .container-max {
+    @apply max-w-7xl mx-auto;
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
+  }
+  
+  .progress-bar {
+    @apply h-1 bg-accent transition-all duration-300 ease-out;
+  }
+  
+  .sticky-cta {
+    @apply fixed bottom-6 right-6 z-50 bg-accent text-white px-6 py-3 rounded-full font-semibold shadow-lg hover:bg-accent/90 transition-all duration-250 ease-in-out;
+  }
+  
+  .mobile-sticky-cta {
+    @apply fixed bottom-0 left-0 right-0 z-50 bg-accent text-white p-4 font-semibold text-center;
+  }
+}
+
+@layer utilities {
+  .animation-fade-in {
+    animation: fadeIn 0.6s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .scroll-smooth {
+    scroll-behavior: smooth;
+  }
+  
+  .backdrop-blur-nav {
+    backdrop-filter: blur(8px);
+    background-color: rgba(255, 255, 255, 0.95);
+  }
+}
